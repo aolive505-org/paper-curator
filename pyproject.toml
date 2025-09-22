@@ -23,6 +23,9 @@ dependencies = [
 ]
 readme = "README.md"
 
+[tool.uv]
+required-environment = "macosx_11_0_arm64"
+
 [dependency-groups]
 dev = [
     "anyio[trio]>=4.9.0",
