@@ -36,6 +36,9 @@ setup: ## Install Python dependencies
 format: ## Format code
 	uv run ruff format
 
+notebook: ## Run Jupyter Notebook with project venv
+	uv run --frozen jupyter notebook
+
 lint: ## Lint and type check
 	uv run ruff check --fix
 	uv run mypy src/
