@@ -29,6 +29,14 @@ health: ## Check all services health
 	@curl -s http://localhost:8080/api/v2/monitor/health || echo "Airflow not responding"
 	@curl -s http://localhost:11434/api/version | jq . || echo "Ollama not responding"
 
+# Ollama mini model + test
+ollama-pull: ## Pull a model into Ollama
+	curl -X POST http://localhost:11434/api/pull -d '{"name":"$(MODEL)"}'
+
+ollama-test: ## Test a pulled model with a hello prompt
+	curl -X POST http://localhost:11434/api/generate \
+	  -d '{"model":"$(MODEL)","prompt":"Hello","stream":false}'
+
 # Development
 setup: ## Install Python dependencies
 	uv sync
